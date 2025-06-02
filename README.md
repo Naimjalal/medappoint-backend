@@ -31,9 +31,11 @@ This backend API manages the data and logic for users, appointments, doctors, ho
 - 📋 MongoDB relationships between users, doctors, hospitals, donations, and appointments
 
 ---
-## ## 🧩 Entity Relationship Diagram (ERD)
+# 🧩 Entity Relationship Diagram (ERD)
 ![ERD Diagram](./medappoint/images/ERD-IMAGE.jpeg)
 
+---
+#  WireFrames
 ![Home Page](./medappoint/images/Home.png)
 
 ![Registration Page](./medappoint/images/register.png)
