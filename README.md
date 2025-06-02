@@ -34,6 +34,11 @@ This backend API manages the data and logic for users, appointments, doctors, ho
 ## ## 🧩 Entity Relationship Diagram (ERD)
 ![ERD Diagram](./medappoint/images/ERD-IMAGE.jpeg)
 
+![Home Page](./medappoint/images/Home.png)
+
+![Registration Page](./medappoint/images/register.png)
+
+![Book Appointment Page](./medappoint/images/book.png)
 ---
 ## 🛠️ Technologies Used
 
