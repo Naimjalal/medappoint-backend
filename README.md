@@ -31,6 +31,10 @@ This backend API manages the data and logic for users, appointments, doctors, ho
 - 📋 MongoDB relationships between users, doctors, hospitals, donations, and appointments
 
 ---
+## ## 🧩 Entity Relationship Diagram (ERD)
+![ERD Diagram](./medappoint/images/ERD-IMAGE.jpeg)
+
+---
 ## 🛠️ Technologies Used
 
 - Backend: Express.js
@@ -38,6 +42,7 @@ This backend API manages the data and logic for users, appointments, doctors, ho
 - Database: MongoDB
 - JWT (for user authentication)
 - ERd LucidChart
+- Trello (user stories)
 
 ---
 ## 🔗 Live Links
@@ -46,12 +51,18 @@ This backend API manages the data and logic for users, appointments, doctors, ho
 
 - 🔗 Trello Board: [View Trello](https://trello.com/b/ojg9NhU0/basic-board)
 
-- 🔗 Backend Deployment: _Coming soon on Fly.io_
+- 🔗 Deployment: _Coming soon on Fly.io_
 
 ---
 
 ### **_Future Updates_**
+- Admin dashboard
 
+- Appointment reminders via email or SMS
+
+- Hospital availability API
+
+- Blood donation notifications
 
 
 ---
