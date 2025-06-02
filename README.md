@@ -49,7 +49,8 @@ This backend API manages the data and logic for users, appointments, doctors, ho
 - Database: MongoDB
 - JWT (for user authentication)
 - ERd LucidChart
-- Trello (user stories)
+- Trello ( user stories tasks)
+- WireFrame used draw.io
 
 ---
 ## 🔗 Live Links
