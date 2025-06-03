@@ -1,19 +1,22 @@
-const { Schema } = require("mongoose")
+const { Schema } = require('mongoose')
 
-const doctorSchema = new Schema({
-  drName: { type: String, required: true },
+const doctorSchema = new Schema(
+  {
+    drName: { type: String, required: true },
 
-  departmentId: {
-    type: Schema.Types.ObjectId,
-    ref: "Department",
-    required: true,
+    departmentId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Department',
+      required: true
+    },
+
+    hospitalId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Hospital',
+      required: true
+    }
   },
-
-  hospitalId: {
-    type: Schema.Types.ObjectId,
-    ref: "Hospital",
-    required: true,
-  },
-})
+  { timestamps: true }
+)
 
 module.exports = doctorSchema
