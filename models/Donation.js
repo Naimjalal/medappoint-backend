@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose')
 
-const donorSchema = new Schema (
+const donationSchema = new Schema (
   {
     
     userId: {
@@ -11,4 +11,4 @@ const donorSchema = new Schema (
   }
 )
 
-module.exports = donorSchema
+module.exports = donationSchema
