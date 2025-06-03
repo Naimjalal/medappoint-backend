@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001
 const app = express()
 
 // Run Seeders when server starts
-// require('./seeders/hospitals')
+require('./seeders/Seeders')
 
 app.get('/', (req, res) => {
   res.send(' Welcome to the Medappoint API!')
