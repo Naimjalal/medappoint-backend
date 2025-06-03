@@ -33,4 +33,22 @@ const updateDonation = async (req, res) => {
   }
 }
 
-module.exports = { createDonation, getDonations, updateDonation }
+const deleteDonation = async (req, res) => {
+  try {
+    await Post.deleteOne({ _id: req.params.donationId })
+    res.status(200).send({
+      msg: 'Donation Deleted',
+      payload: req.params.donationId,
+      status: 'Ok'
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
+module.exports = {
+  createDonation,
+  getDonations,
+  updateDonation,
+  deleteDonation
+}

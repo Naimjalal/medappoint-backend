@@ -22,4 +22,12 @@ router.put(
   middleware.verifyToken,
   DonationsController.updateDonation
 )
+
+router.delete(
+  '/:donationId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  DonationsController.deleteDonation
+)
+
 module.exports = router
