@@ -16,4 +16,10 @@ router.post(
   DonationsController.createDonation
 )
 
+router.put(
+  '/:donationId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  DonationsController.updateDonation
+)
 module.exports = router

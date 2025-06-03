@@ -18,4 +18,19 @@ const createDonation = async (req, res) => {
   }
 }
 
-module.exports = { createDonation, getDonations }
+const updateDonation = async (req, res) => {
+  try {
+    const donation = await Donation.findByIdAndUpdate(
+      req.params.donationId,
+      req.body,
+      {
+        new: true
+      }
+    )
+    res.status(200).send(donation)
+  } catch (error) {
+    throw error
+  }
+}
+
+module.exports = { createDonation, getDonations, updateDonation }
