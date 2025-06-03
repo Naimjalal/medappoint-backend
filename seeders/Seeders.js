@@ -25,6 +25,14 @@ const departments = [
   "Psychiatry",
 ]
 
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("✅ MongoDB connected...")
+    seed()
+  })
+  .catch((e) => console.error("❌ Connection error", e))
+
 const seed = async () => {
   try {
     // Optional: clear old data
@@ -58,9 +66,9 @@ const seed = async () => {
     }
 
     console.log("🌱 Seeding completed!")
+    mongoose.connection.close()
   } catch (error) {
     console.error("❌ Seeding failed:", error)
+    mongoose.connection.close()
   }
 }
-
-seed()
