@@ -5,6 +5,7 @@ const cors = require('cors')
 require('dotenv').config()
 const db = require('./db')
 const AuthRouter = require('./routes/AuthRouter')
+const DonationsRouter = require('./routes/DonationsRouter')
 const PORT = process.env.PORT || 3001
 const app = express()
 
@@ -19,6 +20,7 @@ app.use(express.json())
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use('/auth', AuthRouter)
+app.use('/donations', DonationsRouter)
 
 //listen to port
 app.listen(PORT, () => {
