@@ -7,7 +7,7 @@ const userSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   gender: { type: String, enum: ['Male', 'Female'] },
-  isDonor: { type: Boolean, default: false },
+  // isDonor: { type: Boolean, default: false },
   bloodType: { type: String },
   nationality: { type: String },
   dateOfBirth: { type: String },
