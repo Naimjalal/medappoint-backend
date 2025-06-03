@@ -47,8 +47,22 @@ const Register = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
+const {email, password} = req.body
+const user = await User.findOne({email})
+let matched = await middleware.comparePassword(password,user.passwordDigest
+)
+if (matched){
+  let payload = {
+    id: user.id,
+    email: user.email
+  }
+  let token = middleware.createToken
+  (payload)
+  return res.status(200).send({user: payload, token})
+}
+res.status(401).send({status:"Error", msg: "Unauthorized"})
   } catch (error) {
-    res.status(500).send('Login failed')
+    res.status(500).send({ status: "Error", msg: "An error has occurred logging in!"})
   }
 }
 
