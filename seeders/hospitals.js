@@ -1,15 +1,4 @@
-const mongoose = require('mongoose')
 const { Hospital } = require('../models')
-require('dotenv').config()
-
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('Successfully connected to MongoDB . . .')
-  })
-  .catch((e) => {
-    console.error('Connection error', e.message)
-  })
 
 const createHospitals = async () => {
   let hospitals = [
@@ -31,8 +20,6 @@ const createHospitals = async () => {
   console.log('Creating hospitals . . .')
   await Hospital.insertMany(hospitals)
   console.log('Hospitals created!')
-
-  mongoose.connection.close()
 }
 
 createHospitals()
