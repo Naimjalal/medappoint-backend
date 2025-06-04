@@ -8,12 +8,14 @@ const AuthRouter = require('./routes/AuthRouter')
 
 const AppointmentRouter = require('./routes/AppointmentRouter')
 
-
 const DonationsRouter = require('./routes/DonationsRouter')
+
+const HospitalsRouter = require('./routes/HospitalsRouter')
 
 const PORT = process.env.PORT || 3001
 const app = express()
-const UserRouter = require("./routes/UserRouter")
+const UserRouter = require('./routes/UserRouter')
+const { Hospital } = require('./models')
 
 // Run Seeders when server starts
 // require('./seeders/Seeders')
@@ -25,14 +27,13 @@ app.use(cors())
 app.use(express.json())
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
+app.use('/hospitals', HospitalsRouter)
 app.use('/auth', AuthRouter)
 app.use('/appointments', AppointmentRouter)
 
-
 app.use('/donations', DonationsRouter)
 
-
-app.use("/users",UserRouter)
+app.use('/users', UserRouter)
 
 //listen to port
 app.listen(PORT, () => {
