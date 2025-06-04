@@ -30,10 +30,10 @@ const updateDonation = async (req, res) => {
       await foundDonation.save()
       res.status(200).send(foundDonation)
     } else {
-      res.status(401).send(foundDonation)
+      res.status(401).send('Unauthorized')
     }
   } catch (error) {
-    throw error
+    res.status(400).send('Error')
   }
 }
 
@@ -44,10 +44,10 @@ const deleteDonation = async (req, res) => {
       await foundDonation.deleteOne()
       res.status(200).send(foundDonation)
     } else {
-      res.status(401).send(foundDonation)
+      res.status(401).send('Unauthorized')
     }
   } catch (error) {
-    throw error
+    res.status(400).send('Error')
   }
 }
 
