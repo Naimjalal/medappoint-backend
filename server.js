@@ -8,6 +8,7 @@ const AuthRouter = require('./routes/AuthRouter')
 const DonationsRouter = require('./routes/DonationsRouter')
 const PORT = process.env.PORT || 3001
 const app = express()
+const UserRouter = require("./routes/UserRouter")
 
 // Run Seeders when server starts
 // require('./seeders/Seeders')
@@ -20,7 +21,11 @@ app.use(express.json())
 app.use(logger('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use('/auth', AuthRouter)
+
 app.use('/donations', DonationsRouter)
+
+
+app.use("/users",UserRouter)
 
 //listen to port
 app.listen(PORT, () => {
