@@ -1,4 +1,4 @@
-const { User, Hospital, Donation } = require('../models')
+const { Donation } = require('../models')
 
 const getDonations = async (req, res) => {
   try {
@@ -22,14 +22,16 @@ const createDonation = async (req, res) => {
 
 const updateDonation = async (req, res) => {
   try {
-    const donation = await Donation.findByIdAndUpdate(
-      req.params.donationId,
-      req.body,
-      {
+    const foundDonation = await Donation.findById(req.params.donationId)
+    if (foundDonation.userId.toString() === res.locals.payload.id) {
+      await foundDonation.updateOne(req.body, {
         new: true
-      }
-    )
-    res.status(200).send(donation)
+      })
+      await foundDonation.save()
+      res.status(200).send(foundDonation)
+    } else {
+      res.status(401).send(foundDonation)
+    }
   } catch (error) {
     throw error
   }
@@ -37,12 +39,13 @@ const updateDonation = async (req, res) => {
 
 const deleteDonation = async (req, res) => {
   try {
-    await Post.deleteOne({ _id: req.params.donationId })
-    res.status(200).send({
-      msg: 'Donation Deleted',
-      payload: req.params.donationId,
-      status: 'Ok'
-    })
+    const foundDonation = await Donation.findById(req.params.donationId)
+    if (foundDonation.userId.toString() === res.locals.payload.id) {
+      await foundDonation.deleteOne()
+      res.status(200).send(foundDonation)
+    } else {
+      res.status(401).send(foundDonation)
+    }
   } catch (error) {
     throw error
   }
