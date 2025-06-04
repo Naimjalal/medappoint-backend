@@ -1,19 +1,27 @@
 const { Hospital, Doctor } = require('../models')
 
 const getHospitals = async (req, res) => {
-  const foundHospitals = await Hospital.find({}).populate('departmentsId')
-  res.status(200).send(foundHospitals)
+  try {
+    const foundHospitals = await Hospital.find({}).populate('departmentsId')
+    res.status(200).send(foundHospitals)
+  } catch (error) {
+    res.status(404).send('Not found')
+  }
 }
 
 const getHospitalDoctors = async (req, res) => {
-  const foundDoctors = await Doctor.find({
-    hospitalId: req.params.hospitalId
-  }).populate('departmentId')
-  res
-    .status(200)
-    .send(
-      Object.groupBy(foundDoctors, (doctors) => doctors.departmentId.depName)
-    )
+  try {
+    const foundDoctors = await Doctor.find({
+      hospitalId: req.params.hospitalId
+    }).populate('departmentId')
+    res
+      .status(200)
+      .send(
+        Object.groupBy(foundDoctors, (doctors) => doctors.departmentId.depName)
+      )
+  } catch (error) {
+    res.status(404).send('Not found')
+  }
 }
 
 module.exports = { getHospitals, getHospitalDoctors }
