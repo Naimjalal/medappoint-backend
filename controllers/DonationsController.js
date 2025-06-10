@@ -4,8 +4,19 @@ const getDonations = async (req, res) => {
   try {
     const foundDonations = await Donation.find({
       userId: res.locals.payload.id
-    })
+    }).populate('hospitalId')
     res.status(200).send(foundDonations)
+  } catch (error) {
+    res.status(404).send(error)
+  }
+}
+
+const getDonation = async (req, res) => {
+  try {
+    const foundDonation = await Donation.findById(
+      req.params.donationId
+    ).populate('hospitalId')
+    res.status(200).send(foundDonation)
   } catch (error) {
     res.status(404).send(error)
   }
@@ -54,6 +65,7 @@ const deleteDonation = async (req, res) => {
 module.exports = {
   createDonation,
   getDonations,
+  getDonation,
   updateDonation,
   deleteDonation
 }

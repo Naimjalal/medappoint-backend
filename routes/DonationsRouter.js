@@ -16,6 +16,13 @@ router.post(
   DonationsController.createDonation
 )
 
+router.get(
+  '/:donationId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  DonationsController.getDonation
+)
+
 router.put(
   '/:donationId',
   middleware.stripToken,
