@@ -12,6 +12,9 @@ const DonationsRouter = require('./routes/DonationsRouter')
 
 const HospitalsRouter = require('./routes/HospitalsRouter')
 
+const DoctorsRouter = require('./routes/DoctorsRouter')
+
+
 const PORT = process.env.PORT || 3001
 const app = express()
 const UserRouter = require('./routes/UserRouter')
@@ -30,10 +33,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/hospitals', HospitalsRouter)
 app.use('/auth', AuthRouter)
 app.use('/appointments', AppointmentRouter)
-
+app.use('/doctors', DoctorsRouter)
 app.use('/donations', DonationsRouter)
 
 app.use('/users', UserRouter)
+
+
 
 //listen to port
 app.listen(PORT, () => {
