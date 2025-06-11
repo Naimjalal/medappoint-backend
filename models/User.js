@@ -6,6 +6,7 @@ const userSchema = new Schema({
   passwordDigest: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
+    cpr: { type: String, required: true }, 
   gender: { type: String, enum: ['Male', 'Female'] },
   // isDonor: { type: Boolean, default: false },
   bloodType: { type: String },
