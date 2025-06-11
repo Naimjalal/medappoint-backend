@@ -3,7 +3,7 @@ const { Appointment } = require('../models')
 // GET 
 const getAppointments = async (req, res) => {
   try {
-    const appointments = await Appointment.find({})
+    const appointments = await Appointment.find({userId:res.locals.payload.id})
       .populate('userId')
       .populate('doctorId')
       .populate('hospitalId')
