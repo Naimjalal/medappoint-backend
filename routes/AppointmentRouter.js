@@ -1,33 +1,40 @@
 const router = require('express').Router()
-const controller = require('../controllers/AppointmentController')
+const AppointmentController = require('../controllers/AppointmentController')
 const middleware = require('../middleware')
 
 router.get(
   '/',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.GetAppointments
+  AppointmentController.getAppointments
 )
 
 router.post(
   '/',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.CreateAppointment
+  AppointmentController.createAppointment
+)
+
+router.get(
+  '/:appointmentId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  AppointmentController.getAppointment
 )
 
 router.put(
-  '/:appointment_id',
+  '/:appointmentId',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.UpdateAppointment
+  AppointmentController.updateAppointment
 )
 
 router.delete(
-  '/:appointment_id',
+  '/:appointmentId',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.DeleteAppointment
+  AppointmentController.deleteAppointment
 )
 
 module.exports = router
