@@ -10,75 +10,89 @@
 
 ### **_Description_**
 
-**Medappoint** is a full-stack hospital appointment and blood donation system designed to help patients easily book appointments with doctors in busy hospitals like Salmaniya, and register for blood donation.
+**Medappoint** is a full-stack hospital appointment and blood donation management system.
 
-It aims to solve common issues like:
-- Difficulty in finding available appointment slots
-- Long waiting times for scheduling
-- Lack of centralized donation tracking across hospitals
+It allows users to:
 
-This backend API manages the data and logic for users, appointments, doctors, hospitals, and blood donations.
+- Book appointments with doctors across multiple hospitals.
+- Track blood donations and manage donor registrations.
+- Access personal profiles to view & edit personal and medical details.
+
+This system aims to solve:
+
+- Difficulty in booking appointments in busy hospitals like Salmaniya.
+- Long waiting lists.
+- Lack of centralized donation tracking across hospitals.
+- Provide an organized, secure, user-friendly experience.
 
 ---
 
 ## Features
 
-- 🔒 User authentication with JWT
-- 🩸 Blood donation tracking
-- 🗓️ Book, view, and manage appointments
-- 🏥 Admins can manage doctors and donations (via database)
-- 📍 Multiple hospitals supported
-- 📋 MongoDB relationships between users, doctors, hospitals, donations, and appointments
+## Features
+
+- 🔒 Secure User authentication with JWT
+- 🩸 Blood donation registration & history tracking
+- 🗓️ Appointment booking, editing, and cancellation
+- 🏥 Multiple hospitals & departments supported
+- 👨‍⚕️ Doctor listing & specialty selection
+- 👤 User profile management (Edit profile feature)
+- 📋 MongoDB relationships across multiple collections (users, doctors, hospitals, appointments, donations)
+- 🔐 Protected Routes with token-based authorization
 
 ---
+
 # 🧩 Entity Relationship Diagram (ERD)
+
 ![ERD Diagram](./medappoint/images/ERD-IMAGE.jpeg)
 
 ---
-#  WireFrames
+
+# WireFrames
+
 ![Home Page](./medappoint/images/Home.png)
 
 ![Registration Page](./medappoint/images/register.png)
 
-![Book Appointment Page](./medappoint/images/book.png)
----
+## ![Book Appointment Page](./medappoint/images/book.png)
+
 ## 🛠️ Technologies Used
 
-- Backend: Express.js
-- Frontend: React.js
-- Database: MongoDB
-- JWT (for user authentication)
-- ERd LucidChart
-- Trello ( user stories tasks)
-- WireFrame used draw.io
+- Backend: Node.js / Express.js
+- Frontend: React.js with Vite
+- Database: MongoDB with Mongoose
+- Authentication: JWT
+- Deployment: Fly.io (Backend), Surge (Frontend)
+- Project Management: Trello (User Stories & Task Board)
+- Wireframe: draw.io (Wireframes and Planning)
+- ERD Diagram: Lucidchart
 
 ---
+
 ## 🔗 Live Links
 
-- 🔗 Frontend Repository: [medappoint-frontend](https://github.com/Naimjalal/medappoint-frontend)
+- 🔗 Backend Repository: [medappoint-backend](https://github.com/Naimjalal/medappoint-backend)
+
+🔗 Frontend Repository: [medappoint-frontend](https://github.com/Naimjalal/medappoint-frontend)
 
 - 🔗 Trello Board: [View Trello](https://trello.com/b/ojg9NhU0/basic-board)
 
-- 🔗 Deployment: _Coming soon on Fly.io_
+- 🔗 Deployment: _Coming soon on Fly.io and Surge_
 
 ---
 
 ### **_Future Updates_**
-- Admin dashboard
 
-- Appointment reminders via email or SMS
-
-- Hospital availability API
-
-- Blood donation notifications
-
+- Admin dashboard for hospital management
+- Appointment reminders via email/SMS
+- Hospital availability & dynamic slot scheduling
+- Blood donation campaigns & notifications
 
 ---
 
 ### **_Credits_**
 
 ##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
-
 
 ##### ChatGPT: [chat.openai.com](https://chat.openai.com)
 
