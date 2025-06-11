@@ -12,7 +12,7 @@ const userSchema = new Schema({
   bloodType: { type: String },
   nationality: { type: String },
   dateOfBirth: { type: String },
-  phone: { type: String },
+  phone: { type: String , required:true},
   allergies: { type: String }
 },
 {timestamps: true}
