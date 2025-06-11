@@ -1,7 +1,7 @@
 const { Appointment } = require('../models')
 
 // GET 
-const GetAppointments = async (req, res) => {
+const getAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find({})
       .populate('userId')
@@ -14,8 +14,22 @@ const GetAppointments = async (req, res) => {
   }
 }
 
+// GET
+const getAppointment = async (req, res) => {
+  try {
+    const foundAppointment = await Appointment.findById(req.params.appointmentId)
+      .populate('userId')
+      .populate('doctorId')
+      .populate('hospitalId')
+
+    res.status(200).send(foundAppointment)
+  } catch (error) {
+    res.status(500).send({ message: 'Error fetching appointment', error })
+  }
+}
+
 // CREATE
-const CreateAppointment = async (req, res) => {
+const createAppointment = async (req, res) => {
   try {
     const { doctorId, hospitalId, time } = req.body
 
@@ -33,35 +47,42 @@ const CreateAppointment = async (req, res) => {
 }
 
 // UPDATE 
-const UpdateAppointment = async (req, res) => {
+const updateAppointment = async (req, res) => {
   try {
-    const updated = await Appointment.findByIdAndUpdate(
-      req.params.appointment_id,
-      req.body,
-      { new: true }
-    )
-    res.status(200).send(updated)
+    const foundAppointment = await Appointment.findById(req.params.appointmentId)
+
+    if (foundAppointment.userId.toString() === res.locals.payload.id) {
+      await foundAppointment.updateOne(req.body, { new: true })
+      await foundAppointment.save()
+      res.status(200).send(foundAppointment)
+    } else {
+      res.status(401).send('Unauthorized')
+    }
   } catch (error) {
     res.status(500).send({ message: 'Error updating appointment', error })
   }
 }
 
 // DELETE 
-const DeleteAppointment = async (req, res) => {
+const deleteAppointment = async (req, res) => {
   try {
-    await Appointment.findByIdAndDelete(req.params.appointment_id)
-    res.status(200).send({
-      msg: 'Appointment deleted',
-      id: req.params.appointment_id
-    })
+    const foundAppointment = await Appointment.findById(req.params.appointmentId)
+
+    if (foundAppointment.userId.toString() === res.locals.payload.id) {
+      await foundAppointment.deleteOne()
+      res.status(200).send(foundAppointment)
+    } else {
+      res.status(401).send('Unauthorized')
+    }
   } catch (error) {
     res.status(500).send({ message: 'Error deleting appointment', error })
   }
 }
 
 module.exports = {
-  GetAppointments,
-  CreateAppointment,
-  UpdateAppointment,
-  DeleteAppointment
+  getAppointments,
+  getAppointment,
+  createAppointment,
+  updateAppointment,
+  deleteAppointment
 }
